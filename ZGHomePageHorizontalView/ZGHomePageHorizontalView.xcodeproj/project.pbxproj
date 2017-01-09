@@ -20,6 +20,7 @@
 		EF349A781DDB063900EE7206 /* ZGAmericaController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A771DDB063900EE7206 /* ZGAmericaController.m */; };
 		EF349A7B1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A7A1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m */; };
 		EF349A7E1DDB072000EE7206 /* ZGHomePageHorizontalContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A7D1DDB072000EE7206 /* ZGHomePageHorizontalContainView.m */; };
+		EFF9E6591E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif in Resources */ = {isa = PBXBuildFile; fileRef = EFF9E6581E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		EF349A7A1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGHomePageHorizontalCell.m; sourceTree = "<group>"; };
 		EF349A7C1DDB072000EE7206 /* ZGHomePageHorizontalContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGHomePageHorizontalContainView.h; sourceTree = "<group>"; };
 		EF349A7D1DDB072000EE7206 /* ZGHomePageHorizontalContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGHomePageHorizontalContainView.m; sourceTree = "<group>"; };
+		EFF9E6581E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ZGHomePageHorizontalView.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		EF349A391DDB059D00EE7206 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EFF9E6581E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif */,
 				EF349A3A1DDB059D00EE7206 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -303,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF9E6591E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif in Resources */,
 				EF349A491DDB059E00EE7206 /* LaunchScreen.storyboard in Resources */,
 				EF349A461DDB059E00EE7206 /* Assets.xcassets in Resources */,
 				EF349A441DDB059D00EE7206 /* Main.storyboard in Resources */,
@@ -571,6 +575,7 @@
 				EF349A651DDB059E00EE7206 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF349A661DDB059E00EE7206 /* Build configuration list for PBXNativeTarget "ZGHomePageHorizontalViewTests" */ = {
 			isa = XCConfigurationList;
@@ -579,6 +584,7 @@
 				EF349A681DDB059E00EE7206 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF349A691DDB059E00EE7206 /* Build configuration list for PBXNativeTarget "ZGHomePageHorizontalViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -587,6 +593,7 @@
 				EF349A6B1DDB059E00EE7206 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
