@@ -267,6 +267,7 @@
 				TargetAttributes = {
 					EF349A351DDB059D00EE7206 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9W8KXJ7KY8;
 						ProvisioningStyle = Automatic;
 					};
 					EF349A4E1DDB059E00EE7206 = {
@@ -490,10 +491,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9W8KXJ7KY8;
 				INFOPLIST_FILE = ZGHomePageHorizontalView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Zong.ZGHomePageHorizontalView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kk.hongnishuitest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -502,10 +504,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9W8KXJ7KY8;
 				INFOPLIST_FILE = ZGHomePageHorizontalView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Zong.ZGHomePageHorizontalView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kk.hongnishuitest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

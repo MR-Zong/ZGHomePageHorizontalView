@@ -50,7 +50,6 @@
 }
 
 #pragma mark - scrollViewDelegate
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.y > 0) {
@@ -61,12 +60,15 @@
         }
         
         
-        if (self.containVC.tableView.contentOffset.y < 144) {
+        //        NSLog(@"scrollView contentOffset %@ ",NSStringFromCGPoint(scrollView.contentOffset));
+        if (self.containVC.tableView.contentOffset.y < ZGHomePageHorizontalTopViewHeight - 64.0) {
             CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
             tmpContentOffset.y += scrollView.contentOffset.y;
             self.containVC.tableView.contentOffset = tmpContentOffset;
+            
             self.tableView.contentOffset = CGPointMake(0, 0);
         }
+        
     }else {
         
         // 处理父scrollView下拉，上拉没有减速效果
@@ -90,8 +92,8 @@
     if(self.containVC.tableView.contentOffset.y < -64.0)
     {
         [self.containVC.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
-    }else if (self.containVC.tableView.contentOffset.y > 144){
-        [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight) animated:YES];
+    }else if (self.containVC.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
+        [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0) animated:YES];
     }
 }
 
@@ -102,8 +104,8 @@
         if(self.containVC.tableView.contentOffset.y < -64.0)
         {
             [self.containVC.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
-        }else if (self.containVC.tableView.contentOffset.y > 144){
-            [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight) animated:YES];
+        }else if (self.containVC.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
+            [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0) animated:YES];
         }
     }
 }

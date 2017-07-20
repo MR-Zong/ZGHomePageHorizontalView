@@ -82,10 +82,10 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 100;
+        return ZGHomePageHorizontalTopViewHeight;
     }
     
-    return [UIScreen mainScreen].bounds.size.height;
+    return [UIScreen mainScreen].bounds.size.height - 64.0 - 44.0;
     
 }
 
@@ -94,15 +94,17 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
     
     if (indexPath.section == 1){
         return self.homePageCell;
+    }else {
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"homePageCellReuserdIDB"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"homePageCellReuserdIDBB"];
+        }
+        cell.textLabel.text = @"topView";
+        cell.backgroundColor = [UIColor purpleColor];
+        return cell;
     }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"homePageCellReuserdIDB"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"homePageCellReuserdIDBB"];
-    }
-    cell.textLabel.text = @"topView";
-    cell.backgroundColor = [UIColor purpleColor];
-    return cell;
     
 }
 
@@ -137,24 +139,28 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 }
 
 #pragma mark - scrollview
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    // 隐藏导航栏
-////    NSLog(@"contentOffset.Y %f",scrollView.contentOffset.y);
-////    if (scrollView.contentOffset.y > 0) {
-////        self.navigationController.navigationBar.hidden = YES;
-//////        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-////    }else {
-////        self.navigationController.navigationBar.hidden = NO;
-////    }
-//
-//
-//    if (scrollView.contentOffset.y <= -64) {
-//        [UIView animateWithDuration:0.25 animations:^{
-//            scrollView.contentOffset = CGPointMake(0, -64);
-//        }];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 隐藏导航栏
+//    NSLog(@"contentOffset.Y %f",scrollView.contentOffset.y);
+//    if (scrollView.contentOffset.y > 0) {
+//        self.navigationController.navigationBar.hidden = YES;
+////        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+//    }else {
+//        self.navigationController.navigationBar.hidden = NO;
 //    }
-//}
+
+//    NSLog(@"contentOffset %@",NSStringFromCGPoint(scrollView.contentOffset));
+    if (scrollView == self.tableView) {
+        if(self.tableView.contentOffset.y < -64.0)
+        {
+            ;
+        }else if (self.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
+            [self.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0)];
+        }
+        
+    }
+}
 
 
 
