@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZGPageTableViewController.h"
 
 @class ZGHomePageHorizontalViewController;
 
-@interface ZGJapanController : UITableViewController
+@interface ZGJapanController : ZGPageTableViewController
 
-@property (nonatomic, weak) ZGHomePageHorizontalViewController *containVC;
 @property (nonatomic, assign) CGFloat totalHeight;
 
 @end

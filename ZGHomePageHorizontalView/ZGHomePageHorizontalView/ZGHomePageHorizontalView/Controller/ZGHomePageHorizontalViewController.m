@@ -13,13 +13,16 @@
 #import "ZGHomePageHorizontalCell.h"
 #import "ZGHomePageHorizontalContainView.h"
 
+#import "ZGTabSegmentView.h"
+
 float const ZGHomePageHorizontalTopViewHeight = 144.0;
 
-@interface ZGHomePageHorizontalViewController ()
+@interface ZGHomePageHorizontalViewController () <ZGTabSegmentViewDelegate,ZGHomePageHorizontalCellDelegate>
 
 @property (nonatomic, strong) ZGHomePageHorizontalCell *homePageCell;
 @property (nonatomic, strong) ZGJapanController *japanVC;
 @property (nonatomic, strong) ZGAmericaController *americaVC;
+@property (nonatomic, strong) ZGTabSegmentView *tabSegmentView;
 
 @end
 
@@ -55,13 +58,15 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 {
     [self setupTableView];
     
-    _japanVC = [[ZGJapanController alloc] init];
-    _japanVC.containVC = self;
-    _americaVC = [[ZGAmericaController alloc] init];
-    _americaVC.containVC = self;
+    _tabSegmentView = [[ZGTabSegmentView alloc] initWithFrame:CGRectMake(0, 0, _tableView.bounds.size.width, 44.0)];
+    _tabSegmentView.delegate = self;
+    
+    _japanVC = [[ZGJapanController alloc] initWithContainVC:self];
+    _americaVC = [[ZGAmericaController alloc] initWithContainVC:self];
     
     
-    _homePageCell = [[ZGHomePageHorizontalCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"homePageCellReuserdIDB"];
+    _homePageCell = [[ZGHomePageHorizontalCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ZGHomePageHorizontalCellReusedID];
+    _homePageCell.delegate = self;
     [_homePageCell contentScrollViewAddSubView:self.japanVC.view];
     [_homePageCell contentScrollViewAddSubView:self.americaVC.view];
 }
@@ -91,43 +96,27 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.section == 1){
-        return self.homePageCell;
-    }else {
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"homePageCellReuserdIDB"];
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topViewCell"];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"homePageCellReuserdIDBB"];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"topViewCell"];
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"topView";
         cell.backgroundColor = [UIColor purpleColor];
         return cell;
+
+    }else if (indexPath.section == 1){
+        return self.homePageCell;
     }
     
+    return nil;
     
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *sectionHeaderView = [[UIView alloc] init];
-    
-    CGFloat btnWidth = [UIScreen mainScreen].bounds.size.width / 2.0;
-    CGFloat btnHeight = 44;
-    
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn1 setTitle:@"Japan" forState:UIControlStateNormal];
-    btn1.backgroundColor = [UIColor orangeColor];
-    btn1.frame = CGRectMake(0, 0, btnWidth, btnHeight);
-    [sectionHeaderView addSubview:btn1];
-    
-    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn2 setTitle:@"America" forState:UIControlStateNormal];
-    btn2.backgroundColor = [UIColor lightGrayColor];
-    btn2.frame = CGRectMake(btnWidth, 0, btnWidth, btnHeight);
-    [sectionHeaderView addSubview:btn2];
-    
-    return sectionHeaderView;
+    return self.tabSegmentView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -137,6 +126,24 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
     }
     return 44;
 }
+
+
+#pragma mark - ZGTabSegmentViewDelegate
+- (void)tabSegmentView:(ZGTabSegmentView *)segment didSelectedIndex:(NSInteger)index
+{
+    if (index == 0) {
+        [self.homePageCell.contentScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }else if (index == 1){
+         [self.homePageCell.contentScrollView setContentOffset:CGPointMake(self.homePageCell.contentScrollView.bounds.size.width, 0) animated:YES];
+    }
+}
+
+#pragma mark - ZGHomePageHorizontalCell
+- (void)homePageHorizontalCell:(ZGHomePageHorizontalCell *)cell didScrollToIndex:(NSInteger)index
+{
+    [self.tabSegmentView selectIndex:index];
+}
+
 
 #pragma mark - scrollview
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -149,7 +156,10 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 //    }else {
 //        self.navigationController.navigationBar.hidden = NO;
 //    }
-
+    
+    
+    
+    // 限制contentOffset 范围
 //    NSLog(@"contentOffset %@",NSStringFromCGPoint(scrollView.contentOffset));
     if (scrollView == self.tableView) {
         if(self.tableView.contentOffset.y < -64.0)

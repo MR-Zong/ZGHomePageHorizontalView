@@ -8,9 +8,13 @@
 
 #import "ZGHomePageHorizontalCell.h"
 
-@interface ZGHomePageHorizontalCell ()
+NSString *ZGHomePageHorizontalCellReusedID = @"ZGHomePageHorizontalCellReusedID";
+
+@interface ZGHomePageHorizontalCell () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *subViewsArray;
+@property (nonatomic, assign) BOOL isByMan;
+@property (nonatomic, assign) NSInteger currentIndex;
 
 @end
 
@@ -29,6 +33,7 @@
     _contentScrollView = [[UIScrollView alloc] init];
     _contentScrollView.backgroundColor = [UIColor blackColor];
     _contentScrollView.pagingEnabled = YES;
+    _contentScrollView.delegate = self;
     
     [self.contentView addSubview:_contentScrollView];
 }
@@ -59,6 +64,27 @@
     
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.isByMan == YES) {
+        NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width;
+        if (index != self.currentIndex) {
+            self.currentIndex = index;
+            self.isByMan = NO;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(homePageHorizontalCell:didScrollToIndex:)]) {
+                [self.delegate homePageHorizontalCell:self didScrollToIndex:self.currentIndex];
+            }
+        }
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.isByMan = YES;
+}
+
+
 #pragma mark - getter
 - (NSMutableArray *)subViewsArray
 {
@@ -67,6 +93,8 @@
     }
     return _subViewsArray;
 }
+
+
 
 
 

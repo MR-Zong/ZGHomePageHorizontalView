@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZGPageTableViewController.h"
 
 @class ZGHomePageHorizontalViewController;
 
-@interface ZGAmericaController : UITableViewController
+@interface ZGAmericaController : ZGPageTableViewController
 
-@property (nonatomic, weak) ZGHomePageHorizontalViewController *containVC;
 
 @end
