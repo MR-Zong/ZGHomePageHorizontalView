@@ -17,12 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 
@@ -39,7 +34,7 @@
 #pragma mark - scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.y > 0) {
+    if (scrollView.contentOffset.y > 0) { // 上拉
         
         // 处理父scrollView下拉，上拉没有减速效果
         if (self.containVC.tableView.contentOffset.y > -64.0) {
@@ -47,7 +42,7 @@
         }
         
         
-        //        NSLog(@"scrollView contentOffset %@ ",NSStringFromCGPoint(scrollView.contentOffset));
+//        NSLog(@"scrollView contentOffset ++++++++ %@ ",NSStringFromCGPoint(scrollView.contentOffset));
         if (self.containVC.tableView.contentOffset.y < ZGHomePageHorizontalTopViewHeight - 64.0) {
             CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
             tmpContentOffset.y += scrollView.contentOffset.y;
@@ -56,21 +51,39 @@
             self.tableView.contentOffset = CGPointMake(0, 0);
         }
         
-    }else {
+    }else { // 下拉
         
+//        NSLog(@"scrollView contentOffset -------- %@ ",NSStringFromCGPoint(scrollView.contentOffset));
         // 处理父scrollView下拉，上拉没有减速效果
         if (self.containVC.tableView.contentOffset.y < -64.0) {
-            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            self.tableView.contentInset = UIEdgeInsetsMake(1, 0, 0, 0);
         }
         
-        if (self.containVC.tableView.contentOffset.y >= - 64 - 60) {
+        if ( self.containVC.tableView.contentOffset.y < -64.0) {
             
             
+            CGFloat offsetY = scrollView.contentOffset.y;
+            if (scrollView.decelerating == YES) {
+                if (offsetY < -5) {
+                    offsetY =  -5;
+                }
+            }
             CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
-            tmpContentOffset.y += scrollView.contentOffset.y;
+            tmpContentOffset.y += offsetY;
             self.containVC.tableView.contentOffset = tmpContentOffset;
+            
+            self.tableView.contentOffset = CGPointMake(0, 0);
+
+            
+        }else if ( self.containVC.tableView.contentOffset.y >= - 64 - 60) {
+            
+            CGFloat offsetY = scrollView.contentOffset.y;
+            CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
+            tmpContentOffset.y += offsetY;
+            self.containVC.tableView.contentOffset = tmpContentOffset;
+            
+            self.tableView.contentOffset = CGPointMake(0, 0);
         }
-        self.tableView.contentOffset = CGPointMake(0, 0);
     }
 }
 
@@ -82,6 +95,11 @@
     }else if (self.containVC.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
         [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0) animated:YES];
     }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    ;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
