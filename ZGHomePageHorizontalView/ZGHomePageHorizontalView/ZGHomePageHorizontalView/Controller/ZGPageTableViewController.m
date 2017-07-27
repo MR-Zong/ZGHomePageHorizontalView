@@ -11,6 +11,8 @@
 
 @interface ZGPageTableViewController ()
 
+@property (nonatomic, assign) BOOL willDecelerate;
+
 @end
 
 @implementation ZGPageTableViewController
@@ -59,31 +61,34 @@
             self.tableView.contentInset = UIEdgeInsetsMake(1, 0, 0, 0);
         }
         
-        if ( self.containVC.tableView.contentOffset.y < -64.0) {
-            
+        if ( self.containVC.tableView.contentOffset.y >= - 64 - 500) {
             
             CGFloat offsetY = scrollView.contentOffset.y;
-            if (scrollView.decelerating == YES) {
-                if (offsetY < -5) {
-                    offsetY =  -5;
+
+            if (self.containVC.tableView.contentOffset.y < -128) {
+                
+                if (offsetY < -0.5) {
+                    offsetY =  -0.5;
+                }
+            }else if (self.containVC.tableView.contentOffset.y < -64) {
+                if (scrollView.decelerating == YES) {
+                    if (offsetY < -0.2) {
+                        offsetY =  -0.2;
+                    }
+                }else {
+                    if (offsetY < -5) {
+                        offsetY =  -5;
+                    }
                 }
             }
+            
             CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
             tmpContentOffset.y += offsetY;
             self.containVC.tableView.contentOffset = tmpContentOffset;
-            
-            self.tableView.contentOffset = CGPointMake(0, 0);
-
-            
-        }else if ( self.containVC.tableView.contentOffset.y >= - 64 - 60) {
-            
-            CGFloat offsetY = scrollView.contentOffset.y;
-            CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
-            tmpContentOffset.y += offsetY;
-            self.containVC.tableView.contentOffset = tmpContentOffset;
-            
-            self.tableView.contentOffset = CGPointMake(0, 0);
         }
+        
+        self.tableView.contentOffset = CGPointMake(0, 0);
+
     }
 }
 
@@ -97,13 +102,14 @@
     }
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    ;
-}
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
+    if (self.containVC.tableView.contentOffset.y < -64) {
+        scrollView.decelerationRate = 0;
+    }else {
+        scrollView.decelerationRate = 1;
+    }
+    
     if(!decelerate)
     {
         if(self.containVC.tableView.contentOffset.y < -64.0)
@@ -113,8 +119,8 @@
             [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0) animated:YES];
         }
     }
+    
+    
 }
-
-
 
 @end
