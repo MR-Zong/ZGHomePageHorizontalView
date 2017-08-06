@@ -36,6 +36,7 @@
 #pragma mark - scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+
     if (scrollView.contentOffset.y > 0) { // 上拉
         
         // 处理父scrollView下拉，上拉没有减速效果
@@ -61,7 +62,7 @@
             self.tableView.contentInset = UIEdgeInsetsMake(1, 0, 0, 0);
         }
         
-        if ( self.containVC.tableView.contentOffset.y >= - 64 - 500) {
+        if ( self.containVC.tableView.contentOffset.y >= - 64 - 500) { // -500 数值不重要，重要是目的
             
             CGFloat offsetY = scrollView.contentOffset.y;
 
@@ -72,9 +73,7 @@
                 }
             }else if (self.containVC.tableView.contentOffset.y < -64) {
                 if (scrollView.decelerating == YES) {
-                    if (offsetY < -0.2) {
-                        offsetY =  -0.2;
-                    }
+                    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
                 }else {
                     if (offsetY < -5) {
                         offsetY =  -5;
@@ -122,5 +121,6 @@
     
     
 }
+
 
 @end
