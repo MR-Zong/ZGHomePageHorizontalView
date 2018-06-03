@@ -11,7 +11,6 @@
 #import "ZGJapanController.h"
 #import "ZGAmericaController.h"
 #import "ZGHomePageHorizontalCell.h"
-#import "ZGHomePageHorizontalContainView.h"
 
 #import "ZGTabSegmentView.h"
 
@@ -27,13 +26,6 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 @end
 
 @implementation ZGHomePageHorizontalViewController
-
-
-- (void)loadView
-{
-    self.view = [[ZGHomePageHorizontalContainView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -148,17 +140,6 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
 #pragma mark - scrollview
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // 隐藏导航栏
-//    NSLog(@"contentOffset.Y %f",scrollView.contentOffset.y);
-//    if (scrollView.contentOffset.y > 0) {
-//        self.navigationController.navigationBar.hidden = YES;
-////        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-//    }else {
-//        self.navigationController.navigationBar.hidden = NO;
-//    }
-    
-    
-    
     // 限制contentOffset 范围
 //    NSLog(@"contentOffset %@",NSStringFromCGPoint(scrollView.contentOffset));
     if (scrollView == self.tableView) {
@@ -171,9 +152,5 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
         
     }
 }
-
-
-
-
 
 @end
