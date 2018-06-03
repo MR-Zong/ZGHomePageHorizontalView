@@ -77,12 +77,20 @@
             }
         }
         
-//        CGFloat deceleratY = -128; // 自己实现-64 ~ -18 为减速区间
+        
+        if (containScrollViewY < -64) {
+            if (scrollView.decelerating == YES) {
+                self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            }
+        }
+                    
+        
+//        CGFloat deceleratY = -128; // 自己实现-64 ~ -128 为减速区间
 //        if (containScrollViewY < deceleratY) { // 迅速减速区间
 //                if (offsetY < -0.5) {
 //                    offsetY =  -0.5;
 //                }
-//            }else if (containScrollViewY < -64) { // -64 ~ -18 减速区间
+//            }else if (containScrollViewY < -64) { // -64 ~ -128 减速区间
 //                if (scrollView.decelerating == YES) {
 //                    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 //                }else {
@@ -139,7 +147,7 @@
     CGFloat k = (5.f - 1.f) / 110.f;
     CGFloat decelerateOffsetY = 0;
 
-    decelerateOffsetY = k * contentOffsetY + 9;    
+    decelerateOffsetY = k * contentOffsetY + 9;
     return decelerateOffsetY;
 }
 
