@@ -65,29 +65,37 @@
 //            self.tableView.contentInset = UIEdgeInsetsMake(1, 0, 0, 0);
 //        }
         
-        CGFloat screenBottomY = - 64 - 1000;
-        if ( containScrollViewY >= screenBottomY) { // -500 数值不重要，重要是目的
-            
+//        CGFloat screenBottomY = - 64 - 1000;
+//        if ( containScrollViewY >= screenBottomY) { // -500 数值不重要，重要是目的
+        
             CGFloat offsetY = scrollView.contentOffset.y;
-            CGFloat deceleratY = -128; // 自己实现-64 ~ -18 为减速区间
-            if (containScrollViewY < deceleratY) {
-                if (offsetY < -0.5) {
-                    offsetY =  -0.5;
-                }
-            }else if (containScrollViewY < -64) {
-                if (scrollView.decelerating == YES) {
-                    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-                }else {
-                    if (offsetY < -5) {
-                        offsetY =  -5;
-                    }
-                }
+        
+        if (containScrollViewY < -64) {
+            CGFloat decelerateY = [self decelerateOffsetYWithContentOffsetY:containScrollViewY];
+            if (offsetY < -decelerateY) {
+                offsetY = -decelerateY;
             }
-            
+        }
+        
+//        CGFloat deceleratY = -128; // 自己实现-64 ~ -18 为减速区间
+//        if (containScrollViewY < deceleratY) { // 迅速减速区间
+//                if (offsetY < -0.5) {
+//                    offsetY =  -0.5;
+//                }
+//            }else if (containScrollViewY < -64) { // -64 ~ -18 减速区间
+//                if (scrollView.decelerating == YES) {
+//                    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//                }else {
+//                    if (offsetY < -5) {
+//                        offsetY =  -5;
+//                    }
+//                }
+//            }
+        
             CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
             tmpContentOffset.y += offsetY;
             self.containVC.tableView.contentOffset = tmpContentOffset;
-        }
+//        }
         
         self.tableView.contentOffset = CGPointMake(0, 0);
 
@@ -123,6 +131,16 @@
     }
     
     
+}
+
+#pragma mark -
+- (CGFloat)decelerateOffsetYWithContentOffsetY:(CGFloat)contentOffsetY
+{
+    CGFloat k = (5.f - 1.f) / 110.f;
+    CGFloat decelerateOffsetY = 0;
+
+    decelerateOffsetY = k * contentOffsetY + 9;    
+    return decelerateOffsetY;
 }
 
 
