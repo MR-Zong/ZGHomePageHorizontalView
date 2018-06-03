@@ -37,16 +37,18 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 
+    CGFloat containScrollViewY = self.containVC.tableView.contentOffset.y;
+    
     if (scrollView.contentOffset.y > 0) { // 上拉
         
         // 处理父scrollView下拉，上拉没有减速效果
-        if (self.containVC.tableView.contentOffset.y > -64.0) {
-            self.tableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
+        if (containScrollViewY > -64.0) {
+            self.tableView.contentInset = UIEdgeInsetsMake(3, 0, 0, 0);
         }
         
         
 //        NSLog(@"scrollView contentOffset ++++++++ %@ ",NSStringFromCGPoint(scrollView.contentOffset));
-        if (self.containVC.tableView.contentOffset.y < ZGHomePageHorizontalTopViewHeight - 64.0) {
+        if (containScrollViewY < ZGHomePageHorizontalTopViewHeight - 64.0) {
             CGPoint tmpContentOffset = self.containVC.tableView.contentOffset;
             tmpContentOffset.y += scrollView.contentOffset.y;
             self.containVC.tableView.contentOffset = tmpContentOffset;
@@ -58,20 +60,21 @@
         
 //        NSLog(@"scrollView contentOffset -------- %@ ",NSStringFromCGPoint(scrollView.contentOffset));
         // 处理父scrollView下拉，上拉没有减速效果
-        if (self.containVC.tableView.contentOffset.y < -64.0) {
-            self.tableView.contentInset = UIEdgeInsetsMake(1, 0, 0, 0);
-        }
+        self.tableView.contentInset = UIEdgeInsetsMake(3, 0, 0, 0);
+//        if (self.containVC.tableView.contentOffset.y < -64.0) {
+//            self.tableView.contentInset = UIEdgeInsetsMake(1, 0, 0, 0);
+//        }
         
-        if ( self.containVC.tableView.contentOffset.y >= - 64 - 500) { // -500 数值不重要，重要是目的
+        CGFloat screenBottomY = - 64 - 1000;
+        if ( containScrollViewY >= screenBottomY) { // -500 数值不重要，重要是目的
             
             CGFloat offsetY = scrollView.contentOffset.y;
-
-            if (self.containVC.tableView.contentOffset.y < -128) {
-                
+            CGFloat deceleratY = -128; // 自己实现-64 ~ -18 为减速区间
+            if (containScrollViewY < deceleratY) {
                 if (offsetY < -0.5) {
                     offsetY =  -0.5;
                 }
-            }else if (self.containVC.tableView.contentOffset.y < -64) {
+            }else if (containScrollViewY < -64) {
                 if (scrollView.decelerating == YES) {
                     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
                 }else {

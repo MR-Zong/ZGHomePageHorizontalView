@@ -49,7 +49,7 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.contentInset = UIEdgeInsetsMake(0, 0, -10,0);
+//    _tableView.contentInset = UIEdgeInsetsMake(0, 0, -10,0);
     _tableView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_tableView];
 }
@@ -165,7 +165,7 @@ float const ZGHomePageHorizontalTopViewHeight = 144.0;
         if(self.tableView.contentOffset.y < -64.0)
         {
             ;
-        }else if (self.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
+        }else if (self.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){ // 这里是限制 非常重要
             [self.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0)];
         }
         
