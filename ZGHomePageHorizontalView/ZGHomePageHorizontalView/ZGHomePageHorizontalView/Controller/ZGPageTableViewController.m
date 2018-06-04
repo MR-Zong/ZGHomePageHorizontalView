@@ -114,7 +114,10 @@
 {
     if(self.containVC.tableView.contentOffset.y < -64.0)
     {
-        [self.containVC.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
+        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.containVC.tableView.contentOffset = CGPointMake(0, -64);
+        } completion:nil];
+//        [self.containVC.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
     }else if (self.containVC.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
         [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0) animated:YES];
     }
@@ -132,7 +135,10 @@
     {
         if(self.containVC.tableView.contentOffset.y < -64.0)
         {
-            [self.containVC.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
+            [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                self.containVC.tableView.contentOffset = CGPointMake(0, -64);
+            } completion:nil];
+//            [self.containVC.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
         }else if (self.containVC.tableView.contentOffset.y > ZGHomePageHorizontalTopViewHeight - 64.0){
             [self.containVC.tableView setContentOffset:CGPointMake(0, ZGHomePageHorizontalTopViewHeight - 64.0) animated:YES];
         }
@@ -141,13 +147,11 @@
     
 }
 
-#pragma mark -
+#pragma mark - 模仿系统bounces
 - (CGFloat)decelerateOffsetYWithContentOffsetY:(CGFloat)contentOffsetY
 {
     CGFloat k = (5.f - 1.f) / 110.f;
-    CGFloat decelerateOffsetY = 0;
-
-    decelerateOffsetY = k * contentOffsetY + 9;
+    CGFloat decelerateOffsetY = k * contentOffsetY + 9;
     return decelerateOffsetY;
 }
 
