@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ZGHomePageHorizontalViewController.h"
+#import "ZGWeiboHomePageController.h"
 
 @interface ViewController ()
 
@@ -25,7 +26,15 @@
     [homePageBtn setTitle:@"homePage" forState:UIControlStateNormal];
     [homePageBtn addTarget:self action:@selector(didHomePageBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:homePageBtn];
-    
+
+    // 样例
+    UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    weiboBtn.frame = CGRectMake(100, 300, 100, 100);
+    weiboBtn.backgroundColor = [UIColor purpleColor];
+    [weiboBtn setTitle:@"weibo" forState:UIControlStateNormal];
+    [weiboBtn addTarget:self action:@selector(didWeiboBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:weiboBtn];
+
 }
 
 
@@ -39,6 +48,13 @@
 {
     ZGHomePageHorizontalViewController *homePageVC = [[ZGHomePageHorizontalViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homePageVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)didWeiboBtn:(UIButton *)btn
+{
+    ZGWeiboHomePageController *weiboVC = [[ZGWeiboHomePageController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:weiboVC];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

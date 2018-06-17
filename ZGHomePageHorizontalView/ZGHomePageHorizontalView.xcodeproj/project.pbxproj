@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF18750A20CCC0D1005DA87E /* ZGWeiboHomePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF18750920CCC0D1005DA87E /* ZGWeiboHomePageController.m */; };
 		EF349A3B1DDB059D00EE7206 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A3A1DDB059D00EE7206 /* main.m */; };
 		EF349A3E1DDB059D00EE7206 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A3D1DDB059D00EE7206 /* AppDelegate.m */; };
 		EF349A411DDB059D00EE7206 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A401DDB059D00EE7206 /* ViewController.m */; };
@@ -20,6 +21,10 @@
 		EF349A781DDB063900EE7206 /* ZGAmericaController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A771DDB063900EE7206 /* ZGAmericaController.m */; };
 		EF349A7B1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF349A7A1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m */; };
 		EF439CC51F21AA84004FEB79 /* ZGPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF439CC41F21AA84004FEB79 /* ZGPageTableViewController.m */; };
+		EFE4309120D5FF49006930E5 /* ZGWeiboTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309020D5FF49006930E5 /* ZGWeiboTableView.m */; };
+		EFE4309420D600FE006930E5 /* ZGWeiboContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309320D600FE006930E5 /* ZGWeiboContentCell.m */; };
+		EFE4309720D60723006930E5 /* ZGWBJapanController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309620D60723006930E5 /* ZGWBJapanController.m */; };
+		EFE4309A20D60732006930E5 /* ZGWBAmericaController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309920D60732006930E5 /* ZGWBAmericaController.m */; };
 		EFEFC4961F21B047005314E8 /* ZGTabSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */; };
 		EFEFC49A1F21B167005314E8 /* UIColor+DHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC4991F21B167005314E8 /* UIColor+DHUtil.m */; };
 		EFF9E6591E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif in Resources */ = {isa = PBXBuildFile; fileRef = EFF9E6581E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif */; };
@@ -43,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF18750820CCC0D1005DA87E /* ZGWeiboHomePageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWeiboHomePageController.h; sourceTree = "<group>"; };
+		EF18750920CCC0D1005DA87E /* ZGWeiboHomePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWeiboHomePageController.m; sourceTree = "<group>"; };
 		EF349A361DDB059D00EE7206 /* ZGHomePageHorizontalView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZGHomePageHorizontalView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF349A3A1DDB059D00EE7206 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EF349A3C1DDB059D00EE7206 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +76,14 @@
 		EF349A7A1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGHomePageHorizontalCell.m; sourceTree = "<group>"; };
 		EF439CC31F21AA84004FEB79 /* ZGPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGPageTableViewController.h; sourceTree = "<group>"; };
 		EF439CC41F21AA84004FEB79 /* ZGPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGPageTableViewController.m; sourceTree = "<group>"; };
+		EFE4308F20D5FF49006930E5 /* ZGWeiboTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWeiboTableView.h; sourceTree = "<group>"; };
+		EFE4309020D5FF49006930E5 /* ZGWeiboTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWeiboTableView.m; sourceTree = "<group>"; };
+		EFE4309220D600FE006930E5 /* ZGWeiboContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWeiboContentCell.h; sourceTree = "<group>"; };
+		EFE4309320D600FE006930E5 /* ZGWeiboContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWeiboContentCell.m; sourceTree = "<group>"; };
+		EFE4309520D60723006930E5 /* ZGWBJapanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWBJapanController.h; sourceTree = "<group>"; };
+		EFE4309620D60723006930E5 /* ZGWBJapanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBJapanController.m; sourceTree = "<group>"; };
+		EFE4309820D60732006930E5 /* ZGWBAmericaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWBAmericaController.h; sourceTree = "<group>"; };
+		EFE4309920D60732006930E5 /* ZGWBAmericaController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBAmericaController.m; sourceTree = "<group>"; };
 		EFEFC4941F21B047005314E8 /* ZGTabSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGTabSegmentView.h; sourceTree = "<group>"; };
 		EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGTabSegmentView.m; sourceTree = "<group>"; };
 		EFEFC4981F21B167005314E8 /* UIColor+DHUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DHUtil.h"; sourceTree = "<group>"; };
@@ -101,6 +116,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF18750420CCC0B9005DA87E /* ZGWeiboHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				EF18750520CCC0B9005DA87E /* Controller */,
+				EF18750620CCC0B9005DA87E /* Model */,
+				EF18750720CCC0B9005DA87E /* View */,
+			);
+			path = ZGWeiboHomePage;
+			sourceTree = "<group>";
+		};
+		EF18750520CCC0B9005DA87E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF18750820CCC0D1005DA87E /* ZGWeiboHomePageController.h */,
+				EF18750920CCC0D1005DA87E /* ZGWeiboHomePageController.m */,
+				EFE4309520D60723006930E5 /* ZGWBJapanController.h */,
+				EFE4309620D60723006930E5 /* ZGWBJapanController.m */,
+				EFE4309820D60732006930E5 /* ZGWBAmericaController.h */,
+				EFE4309920D60732006930E5 /* ZGWBAmericaController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EF18750620CCC0B9005DA87E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF18750720CCC0B9005DA87E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EFE4308F20D5FF49006930E5 /* ZGWeiboTableView.h */,
+				EFE4309020D5FF49006930E5 /* ZGWeiboTableView.m */,
+				EFE4309220D600FE006930E5 /* ZGWeiboContentCell.h */,
+				EFE4309320D600FE006930E5 /* ZGWeiboContentCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EF349A2D1DDB059D00EE7206 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +180,7 @@
 		EF349A381DDB059D00EE7206 /* ZGHomePageHorizontalView */ = {
 			isa = PBXGroup;
 			children = (
+				EF18750420CCC0B9005DA87E /* ZGWeiboHomePage */,
 				EF349A6C1DDB05EF00EE7206 /* ZGHomePageHorizontalView */,
 				EF349A3C1DDB059D00EE7206 /* AppDelegate.h */,
 				EF349A3D1DDB059D00EE7206 /* AppDelegate.m */,
@@ -353,16 +410,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE4309720D60723006930E5 /* ZGWBJapanController.m in Sources */,
 				EF439CC51F21AA84004FEB79 /* ZGPageTableViewController.m in Sources */,
+				EFE4309420D600FE006930E5 /* ZGWeiboContentCell.m in Sources */,
 				EF349A411DDB059D00EE7206 /* ViewController.m in Sources */,
 				EF349A7B1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m in Sources */,
+				EFE4309120D5FF49006930E5 /* ZGWeiboTableView.m in Sources */,
 				EF349A781DDB063900EE7206 /* ZGAmericaController.m in Sources */,
+				EFE4309A20D60732006930E5 /* ZGWBAmericaController.m in Sources */,
 				EF349A3E1DDB059D00EE7206 /* AppDelegate.m in Sources */,
 				EF349A751DDB062C00EE7206 /* ZGJapanController.m in Sources */,
 				EFEFC49A1F21B167005314E8 /* UIColor+DHUtil.m in Sources */,
 				EF349A3B1DDB059D00EE7206 /* main.m in Sources */,
 				EFEFC4961F21B047005314E8 /* ZGTabSegmentView.m in Sources */,
 				EF349A721DDB061500EE7206 /* ZGHomePageHorizontalViewController.m in Sources */,
+				EF18750A20CCC0D1005DA87E /* ZGWeiboHomePageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
