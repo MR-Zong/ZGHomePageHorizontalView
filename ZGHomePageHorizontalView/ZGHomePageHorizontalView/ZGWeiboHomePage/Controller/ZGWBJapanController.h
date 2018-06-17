@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZGWBBasePageController.h"
 
-@interface ZGWBJapanController : UIViewController
+@interface ZGWBJapanController : ZGWBBasePageController
 
 @end

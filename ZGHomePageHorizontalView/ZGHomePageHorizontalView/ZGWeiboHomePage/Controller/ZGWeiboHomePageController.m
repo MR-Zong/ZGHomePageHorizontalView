@@ -25,8 +25,16 @@
 
 @implementation ZGWeiboHomePageController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCanScroll) name:ZGWeiboTableCanScrollNotify object:nil];
     
     [self initialize];
     [self setupViews];
@@ -90,7 +98,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.tableView.bounds.size.height - 200;
+    return self.tableView.bounds.size.height;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -120,6 +128,7 @@
 
 
 #pragma mark - scrollview
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     // 限制contentOffset 范围
@@ -133,6 +142,23 @@
         }
         
     }
+    
+    // 通知 pageTable 可不可以 滚动
+    if (scrollView.contentOffset.y >= ZGWeiboHeaderViewHeight - 64.0) {
+        NSLog(@"ffffffffffffffff");
+        // 自己不能滚动
+        scrollView.scrollEnabled = NO;
+        // pageTable 可以滚动
+        [[NSNotificationCenter defaultCenter] postNotificationName:ZGWeiboPageTableCanScrollNotify object:nil];
+    }
+}
+
+
+#pragma mark - notify
+- (void)didCanScroll
+{
+    NSLog(@"get PPPPPPPPP");
+    self.tableView.scrollEnabled = YES;
 }
 
 

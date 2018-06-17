@@ -25,6 +25,7 @@
 		EFE4309420D600FE006930E5 /* ZGWeiboContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309320D600FE006930E5 /* ZGWeiboContentCell.m */; };
 		EFE4309720D60723006930E5 /* ZGWBJapanController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309620D60723006930E5 /* ZGWBJapanController.m */; };
 		EFE4309A20D60732006930E5 /* ZGWBAmericaController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309920D60732006930E5 /* ZGWBAmericaController.m */; };
+		EFE4309D20D64AC9006930E5 /* ZGWBBasePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309C20D64AC9006930E5 /* ZGWBBasePageController.m */; };
 		EFEFC4961F21B047005314E8 /* ZGTabSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */; };
 		EFEFC49A1F21B167005314E8 /* UIColor+DHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC4991F21B167005314E8 /* UIColor+DHUtil.m */; };
 		EFF9E6591E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif in Resources */ = {isa = PBXBuildFile; fileRef = EFF9E6581E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif */; };
@@ -84,6 +85,8 @@
 		EFE4309620D60723006930E5 /* ZGWBJapanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBJapanController.m; sourceTree = "<group>"; };
 		EFE4309820D60732006930E5 /* ZGWBAmericaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWBAmericaController.h; sourceTree = "<group>"; };
 		EFE4309920D60732006930E5 /* ZGWBAmericaController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBAmericaController.m; sourceTree = "<group>"; };
+		EFE4309B20D64AC9006930E5 /* ZGWBBasePageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWBBasePageController.h; sourceTree = "<group>"; };
+		EFE4309C20D64AC9006930E5 /* ZGWBBasePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBBasePageController.m; sourceTree = "<group>"; };
 		EFEFC4941F21B047005314E8 /* ZGTabSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGTabSegmentView.h; sourceTree = "<group>"; };
 		EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGTabSegmentView.m; sourceTree = "<group>"; };
 		EFEFC4981F21B167005314E8 /* UIColor+DHUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DHUtil.h"; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				EFE4309620D60723006930E5 /* ZGWBJapanController.m */,
 				EFE4309820D60732006930E5 /* ZGWBAmericaController.h */,
 				EFE4309920D60732006930E5 /* ZGWBAmericaController.m */,
+				EFE4309B20D64AC9006930E5 /* ZGWBBasePageController.h */,
+				EFE4309C20D64AC9006930E5 /* ZGWBBasePageController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				EF349A781DDB063900EE7206 /* ZGAmericaController.m in Sources */,
 				EFE4309A20D60732006930E5 /* ZGWBAmericaController.m in Sources */,
 				EF349A3E1DDB059D00EE7206 /* AppDelegate.m in Sources */,
+				EFE4309D20D64AC9006930E5 /* ZGWBBasePageController.m in Sources */,
 				EF349A751DDB062C00EE7206 /* ZGJapanController.m in Sources */,
 				EFEFC49A1F21B167005314E8 /* UIColor+DHUtil.m in Sources */,
 				EF349A3B1DDB059D00EE7206 /* main.m in Sources */,

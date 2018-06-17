@@ -10,8 +10,6 @@
 
 @interface ZGWBAmericaController () <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
-
 @end
 
 @implementation ZGWBAmericaController
@@ -25,12 +23,13 @@
 
 - (void)setupViews
 {
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    _tableView.showsVerticalScrollIndicator= NO;
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"ZGWeiboCellReusedId"];
-    [self.view addSubview:_tableView];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.tableView.scrollEnabled = NO;
+    self.tableView.showsVerticalScrollIndicator= NO;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"ZGWeiboCellReusedId"];
+    [self.view addSubview:self.tableView];
 }
 
 #pragma mark - Table view data source

@@ -8,7 +8,7 @@
 
 #import "ZGWeiboContentCell.h"
 
-CGFloat ZGWeiboHeaderViewHeight = 200;
+CGFloat ZGWeiboHeaderViewHeight = 156;
 
 @interface ZGWeiboContentCell () <UIScrollViewDelegate>
 
@@ -30,8 +30,8 @@ CGFloat ZGWeiboHeaderViewHeight = 200;
 
 - (void)setupViews
 {
-    _contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 200)];
-    _contentScrollView.contentSize = CGSizeMake(2*[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 200);
+    _contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    _contentScrollView.contentSize = CGSizeMake(2*[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     _contentScrollView.backgroundColor = [UIColor blackColor];
     _contentScrollView.pagingEnabled = YES;
     _contentScrollView.delegate = self;
