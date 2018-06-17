@@ -14,7 +14,7 @@
 #import "ZGWBAmericaController.h"
 
 
-@interface ZGWeiboHomePageController () <UITableViewDelegate,UITableViewDataSource,ZGTabSegmentViewDelegate>
+@interface ZGWeiboHomePageController () <UITableViewDelegate,UITableViewDataSource,ZGTabSegmentViewDelegate,ZGWeiboContentCellDelegate>
 
 @property (nonatomic, strong) ZGWeiboTableView *tableView;
 @property (nonatomic, strong) ZGWeiboContentCell *contentCell;
@@ -52,6 +52,7 @@
     [self.view addSubview:_tableView];
     
     _contentCell = [_tableView dequeueReusableCellWithIdentifier:@"ZGWeiboContentCellReusedId"];
+    _contentCell.delegate = self;
 
     ZGWBJapanController *jVC = [[ZGWBJapanController alloc] init];
     jVC.view.frame = CGRectMake(0, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
@@ -109,6 +110,28 @@
         [self.contentCell.contentScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     }else if (index == 1){
         [self.contentCell.contentScrollView setContentOffset:CGPointMake(self.contentCell.contentScrollView.bounds.size.width, 0) animated:YES];
+    }
+}
+#pragma mark - ZGWeiboContentCellDelegate
+- (void)weiboContentCell:(ZGWeiboContentCell *)cell didScrollToIndex:(NSInteger)index
+{
+    [self.tabSegmentView selectIndex:index];
+}
+
+
+#pragma mark - scrollview
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 限制contentOffset 范围
+    //    NSLog(@"contentOffset %@",NSStringFromCGPoint(scrollView.contentOffset));
+    if (scrollView == self.tableView) {
+        if(self.tableView.contentOffset.y < -64.0)
+        {
+            ;
+        }else if (self.tableView.contentOffset.y > ZGWeiboHeaderViewHeight - 64.0){ // 这里是限制 非常重要
+            [self.tableView setContentOffset:CGPointMake(0, ZGWeiboHeaderViewHeight - 64.0)];
+        }
+        
     }
 }
 

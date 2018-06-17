@@ -8,7 +8,11 @@
 
 #import "ZGWeiboContentCell.h"
 
-@interface ZGWeiboContentCell ()
+CGFloat ZGWeiboHeaderViewHeight = 200;
+
+@interface ZGWeiboContentCell () <UIScrollViewDelegate>
+
+@property (nonatomic, assign) NSInteger currentIndex;
 
 
 @end
@@ -30,8 +34,25 @@
     _contentScrollView.contentSize = CGSizeMake(2*[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 200);
     _contentScrollView.backgroundColor = [UIColor blackColor];
     _contentScrollView.pagingEnabled = YES;
+    _contentScrollView.delegate = self;
     [self.contentView addSubview:_contentScrollView];
     
 }
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.dragging || scrollView.decelerating) {
+        NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width;
+        if (index != self.currentIndex) {
+            self.currentIndex = index;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(weiboContentCell:didScrollToIndex:)]) {
+                [self.delegate weiboContentCell:self didScrollToIndex:self.currentIndex];
+            }
+        }
+    }
+}
+
+
 
 @end

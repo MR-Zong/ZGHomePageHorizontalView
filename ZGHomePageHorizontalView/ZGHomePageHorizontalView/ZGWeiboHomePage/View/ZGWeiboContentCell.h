@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN CGFloat ZGWeiboHeaderViewHeight;
+
+@class ZGWeiboContentCell;
+
+@protocol ZGWeiboContentCellDelegate <NSObject>
+
+- (void)weiboContentCell:(ZGWeiboContentCell *)cell didScrollToIndex:(NSInteger)index;
+
+@end
+
 @interface ZGWeiboContentCell : UITableViewCell
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, weak) id <ZGWeiboContentCellDelegate> delegate;
 
 @end
