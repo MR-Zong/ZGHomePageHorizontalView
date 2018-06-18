@@ -12,10 +12,10 @@
 
 
 ///允许同时识别多个手势
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-//    NSLog(@"pageTable gggggg");
-    return YES;
-}
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+////    NSLog(@"pageTable gggggg");
+//    return YES;
+//}
 
 //- (void)handlePan:(UIPanGestureRecognizer *)pan
 //{

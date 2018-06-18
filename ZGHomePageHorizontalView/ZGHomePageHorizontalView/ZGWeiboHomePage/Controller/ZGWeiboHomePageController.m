@@ -21,6 +21,8 @@
 @property (nonatomic, strong) ZGTabSegmentView *tabSegmentView;
 @property (nonatomic, assign) BOOL canScroll;
 
+@property (nonatomic, strong) ZGWBJapanController *jVC;
+@property (nonatomic, strong) ZGWBAmericaController *aVC;
 
 @end
 
@@ -65,18 +67,18 @@
     _contentCell = [_tableView dequeueReusableCellWithIdentifier:@"ZGWeiboContentCellReusedId"];
     _contentCell.delegate = self;
     
-    ZGWBJapanController *jVC = [[ZGWBJapanController alloc] init];
-    jVC.view.frame = CGRectMake(0, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
-    [_contentCell.contentScrollView addSubview:jVC.view];
-    [self addChildViewController:jVC];
+    _jVC = [[ZGWBJapanController alloc] init];
+    _jVC.view.frame = CGRectMake(0, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
+    [_contentCell.contentScrollView addSubview:_jVC.view];
+    [self addChildViewController:_jVC];
     
     
-    ZGWBAmericaController *aVC = [[ZGWBAmericaController alloc] init];
-    aVC.view.frame = CGRectMake(_contentCell.contentScrollView.bounds.size.width, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
-    [_contentCell.contentScrollView addSubview:aVC.view];
-    [self addChildViewController:aVC];
+    _aVC = [[ZGWBAmericaController alloc] init];
+    _aVC.view.frame = CGRectMake(_contentCell.contentScrollView.bounds.size.width, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
+    [_contentCell.contentScrollView addSubview:_aVC.view];
+    [self addChildViewController:_aVC];
     
-    _contentCell.curTableView = jVC.tableView;
+    _contentCell.curTableView = _jVC.tableView;
     
     _tableView.contentCell = _contentCell;
 
@@ -131,6 +133,12 @@
 #pragma mark - ZGWeiboContentCellDelegate
 - (void)weiboContentCell:(ZGWeiboContentCell *)cell didScrollToIndex:(NSInteger)index
 {
+    if(index == 0)
+    {
+        self.contentCell.curTableView = self.jVC.tableView;
+    }else {
+        self.contentCell.curTableView = self.aVC.tableView;
+    }
     [self.tabSegmentView selectIndex:index];
 }
 
