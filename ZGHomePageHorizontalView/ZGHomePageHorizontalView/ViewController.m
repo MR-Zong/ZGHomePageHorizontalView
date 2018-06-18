@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ZGHomePageHorizontalViewController.h"
 #import "ZGWeiboHomePageController.h"
+#import "ZGTestTableController.h"
 
 @interface ViewController ()
 
@@ -35,6 +36,14 @@
     [weiboBtn addTarget:self action:@selector(didWeiboBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:weiboBtn];
 
+    // 样例
+    UIButton *testBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    testBtn.frame = CGRectMake(220, 300, 100, 100);
+    testBtn.backgroundColor = [UIColor purpleColor];
+    [testBtn setTitle:@"测试" forState:UIControlStateNormal];
+    [testBtn addTarget:self action:@selector(didTestBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testBtn];
+
 }
 
 
@@ -54,6 +63,13 @@
 - (void)didWeiboBtn:(UIButton *)btn
 {
     ZGWeiboHomePageController *weiboVC = [[ZGWeiboHomePageController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:weiboVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)didTestBtn:(UIButton *)btn
+{
+    ZGTestTableController *weiboVC = [[ZGTestTableController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:weiboVC];
     [self presentViewController:nav animated:YES completion:nil];
 }

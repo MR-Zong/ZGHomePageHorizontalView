@@ -26,6 +26,8 @@
 		EFE4309720D60723006930E5 /* ZGWBJapanController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309620D60723006930E5 /* ZGWBJapanController.m */; };
 		EFE4309A20D60732006930E5 /* ZGWBAmericaController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309920D60732006930E5 /* ZGWBAmericaController.m */; };
 		EFE4309D20D64AC9006930E5 /* ZGWBBasePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309C20D64AC9006930E5 /* ZGWBBasePageController.m */; };
+		EFE430A020D7576A006930E5 /* ZGPageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE4309F20D7576A006930E5 /* ZGPageTableView.m */; };
+		EFE430A720D7A289006930E5 /* ZGTestTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE430A620D7A289006930E5 /* ZGTestTableController.m */; };
 		EFEFC4961F21B047005314E8 /* ZGTabSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */; };
 		EFEFC49A1F21B167005314E8 /* UIColor+DHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEFC4991F21B167005314E8 /* UIColor+DHUtil.m */; };
 		EFF9E6591E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif in Resources */ = {isa = PBXBuildFile; fileRef = EFF9E6581E2374BB0079D2B4 /* ZGHomePageHorizontalView.gif */; };
@@ -87,6 +89,10 @@
 		EFE4309920D60732006930E5 /* ZGWBAmericaController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBAmericaController.m; sourceTree = "<group>"; };
 		EFE4309B20D64AC9006930E5 /* ZGWBBasePageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGWBBasePageController.h; sourceTree = "<group>"; };
 		EFE4309C20D64AC9006930E5 /* ZGWBBasePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGWBBasePageController.m; sourceTree = "<group>"; };
+		EFE4309E20D7576A006930E5 /* ZGPageTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGPageTableView.h; sourceTree = "<group>"; };
+		EFE4309F20D7576A006930E5 /* ZGPageTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGPageTableView.m; sourceTree = "<group>"; };
+		EFE430A520D7A289006930E5 /* ZGTestTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGTestTableController.h; sourceTree = "<group>"; };
+		EFE430A620D7A289006930E5 /* ZGTestTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGTestTableController.m; sourceTree = "<group>"; };
 		EFEFC4941F21B047005314E8 /* ZGTabSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGTabSegmentView.h; sourceTree = "<group>"; };
 		EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGTabSegmentView.m; sourceTree = "<group>"; };
 		EFEFC4981F21B167005314E8 /* UIColor+DHUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DHUtil.h"; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 				EFE4309020D5FF49006930E5 /* ZGWeiboTableView.m */,
 				EFE4309220D600FE006930E5 /* ZGWeiboContentCell.h */,
 				EFE4309320D600FE006930E5 /* ZGWeiboContentCell.m */,
+				EFE4309E20D7576A006930E5 /* ZGPageTableView.h */,
+				EFE4309F20D7576A006930E5 /* ZGPageTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 		EF349A381DDB059D00EE7206 /* ZGHomePageHorizontalView */ = {
 			isa = PBXGroup;
 			children = (
+				EFE430A120D7A275006930E5 /* ZGTestTable */,
 				EF18750420CCC0B9005DA87E /* ZGWeiboHomePage */,
 				EF349A6C1DDB05EF00EE7206 /* ZGHomePageHorizontalView */,
 				EF349A3C1DDB059D00EE7206 /* AppDelegate.h */,
@@ -267,6 +276,39 @@
 				EF349A7A1DDB070A00EE7206 /* ZGHomePageHorizontalCell.m */,
 				EFEFC4941F21B047005314E8 /* ZGTabSegmentView.h */,
 				EFEFC4951F21B047005314E8 /* ZGTabSegmentView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EFE430A120D7A275006930E5 /* ZGTestTable */ = {
+			isa = PBXGroup;
+			children = (
+				EFE430A220D7A275006930E5 /* Controller */,
+				EFE430A320D7A275006930E5 /* Model */,
+				EFE430A420D7A275006930E5 /* View */,
+			);
+			path = ZGTestTable;
+			sourceTree = "<group>";
+		};
+		EFE430A220D7A275006930E5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EFE430A520D7A289006930E5 /* ZGTestTableController.h */,
+				EFE430A620D7A289006930E5 /* ZGTestTableController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EFE430A320D7A275006930E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EFE430A420D7A275006930E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE4309720D60723006930E5 /* ZGWBJapanController.m in Sources */,
+				EFE430A020D7576A006930E5 /* ZGPageTableView.m in Sources */,
 				EF439CC51F21AA84004FEB79 /* ZGPageTableViewController.m in Sources */,
 				EFE4309420D600FE006930E5 /* ZGWeiboContentCell.m in Sources */,
 				EF349A411DDB059D00EE7206 /* ViewController.m in Sources */,
@@ -427,6 +470,7 @@
 				EFE4309D20D64AC9006930E5 /* ZGWBBasePageController.m in Sources */,
 				EF349A751DDB062C00EE7206 /* ZGJapanController.m in Sources */,
 				EFEFC49A1F21B167005314E8 /* UIColor+DHUtil.m in Sources */,
+				EFE430A720D7A289006930E5 /* ZGTestTableController.m in Sources */,
 				EF349A3B1DDB059D00EE7206 /* main.m in Sources */,
 				EFEFC4961F21B047005314E8 /* ZGTabSegmentView.m in Sources */,
 				EF349A721DDB061500EE7206 /* ZGHomePageHorizontalViewController.m in Sources */,

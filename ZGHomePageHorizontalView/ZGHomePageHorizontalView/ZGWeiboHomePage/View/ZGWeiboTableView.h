@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZGWeiboContentCell;
+
 @interface ZGWeiboTableView : UITableView
+
+@property (nonatomic, strong) ZGWeiboContentCell *contentCell;
+
 
 @end

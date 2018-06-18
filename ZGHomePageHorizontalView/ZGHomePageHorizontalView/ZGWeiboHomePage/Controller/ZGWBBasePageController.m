@@ -34,19 +34,24 @@ NSString *const ZGWeiboTableCanScrollNotify = @"ZGWeiboTableCanScrollNotify";
 #pragma mark - notify
 - (void)didCanScroll
 {
-    self.tableView.scrollEnabled = YES;
+    self.canScroll = YES;
 }
 
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+//            NSLog(@"ppppppppppppppp");
     if (scrollView.contentOffset.y <= 0) {
-        NSLog(@"ppppppppppppppp");
         // 自己不可以滚动
-        scrollView.scrollEnabled = NO;
+        self.canScroll = NO;
+        [scrollView setContentOffset:CGPointZero];
         // 主 table 可以滚动
         [[NSNotificationCenter defaultCenter] postNotificationName:ZGWeiboTableCanScrollNotify object:nil];
+    }else {
+        if (!self.canScroll) {
+            [scrollView setContentOffset:CGPointZero];
+        }
     }
     
 }

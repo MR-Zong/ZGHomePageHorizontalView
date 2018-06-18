@@ -35,6 +35,7 @@ CGFloat ZGWeiboHeaderViewHeight = 156;
     _contentScrollView.backgroundColor = [UIColor blackColor];
     _contentScrollView.pagingEnabled = YES;
     _contentScrollView.delegate = self;
+    _contentScrollView.bounces = NO;
     [self.contentView addSubview:_contentScrollView];
     
 }

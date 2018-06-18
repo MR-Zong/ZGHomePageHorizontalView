@@ -24,8 +24,7 @@
 - (void)setupViews
 {
     NSLog(@"%@",NSStringFromCGRect(self.view.bounds));
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    self.tableView.scrollEnabled = NO;
+    self.tableView = [[ZGPageTableView alloc] initWithFrame:self.view.bounds];
     self.tableView.backgroundColor = [UIColor redColor];
     self.tableView.showsVerticalScrollIndicator= NO;
     self.tableView.dataSource = self;

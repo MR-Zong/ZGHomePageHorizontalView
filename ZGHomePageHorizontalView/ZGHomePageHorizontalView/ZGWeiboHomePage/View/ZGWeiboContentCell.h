@@ -21,6 +21,7 @@ UIKIT_EXTERN CGFloat ZGWeiboHeaderViewHeight;
 @interface ZGWeiboContentCell : UITableViewCell
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UITableView *curTableView;
 @property (nonatomic, weak) id <ZGWeiboContentCellDelegate> delegate;
 
 @end

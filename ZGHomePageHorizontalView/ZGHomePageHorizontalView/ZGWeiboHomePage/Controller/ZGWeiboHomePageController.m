@@ -19,6 +19,7 @@
 @property (nonatomic, strong) ZGWeiboTableView *tableView;
 @property (nonatomic, strong) ZGWeiboContentCell *contentCell;
 @property (nonatomic, strong) ZGTabSegmentView *tabSegmentView;
+@property (nonatomic, assign) BOOL canScroll;
 
 
 @end
@@ -43,6 +44,7 @@
 - (void)initialize
 {
     self.title = @"个人主页";
+    _canScroll = YES;
 }
 
 
@@ -54,6 +56,7 @@
 
     _tableView = [[ZGWeiboTableView alloc] initWithFrame:self.view.bounds];
     _tableView.backgroundColor = [UIColor greenColor];
+    _tableView.showsVerticalScrollIndicator = NO;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [_tableView registerClass:[ZGWeiboContentCell class] forCellReuseIdentifier:@"ZGWeiboContentCellReusedId"];
@@ -61,7 +64,7 @@
     
     _contentCell = [_tableView dequeueReusableCellWithIdentifier:@"ZGWeiboContentCellReusedId"];
     _contentCell.delegate = self;
-
+    
     ZGWBJapanController *jVC = [[ZGWBJapanController alloc] init];
     jVC.view.frame = CGRectMake(0, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
     [_contentCell.contentScrollView addSubview:jVC.view];
@@ -72,6 +75,11 @@
     aVC.view.frame = CGRectMake(_contentCell.contentScrollView.bounds.size.width, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
     [_contentCell.contentScrollView addSubview:aVC.view];
     [self addChildViewController:aVC];
+    
+    _contentCell.curTableView = jVC.tableView;
+    
+    _tableView.contentCell = _contentCell;
+
 
     
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 156)];
@@ -134,22 +142,24 @@
     // 限制contentOffset 范围
     //    NSLog(@"contentOffset %@",NSStringFromCGPoint(scrollView.contentOffset));
     if (scrollView == self.tableView) {
-        if(self.tableView.contentOffset.y < -64.0)
-        {
-            ;
-        }else if (self.tableView.contentOffset.y > ZGWeiboHeaderViewHeight - 64.0){ // 这里是限制 非常重要
-            [self.tableView setContentOffset:CGPointMake(0, ZGWeiboHeaderViewHeight - 64.0)];
+
+        if (scrollView.contentOffset.y >= ZGWeiboHeaderViewHeight - 64.0){ // 这里是限制 非常重要
+            
+            // 自己不能滚动
+            self.canScroll = NO;
+            [scrollView setContentOffset:CGPointMake(0, ZGWeiboHeaderViewHeight - 64.0)];
+            
+            // 通知 pageTable 可以 滚动
+//            NSLog(@"ffffffffffffffff");
+            // pageTable 可以滚动
+            [[NSNotificationCenter defaultCenter] postNotificationName:ZGWeiboPageTableCanScrollNotify object:nil];
+            
+        }else {
+            if (!self.canScroll) {
+                [scrollView setContentOffset:CGPointMake(0, ZGWeiboHeaderViewHeight - 64.0)];
+            }
         }
         
-    }
-    
-    // 通知 pageTable 可不可以 滚动
-    if (scrollView.contentOffset.y >= ZGWeiboHeaderViewHeight - 64.0) {
-        NSLog(@"ffffffffffffffff");
-        // 自己不能滚动
-        scrollView.scrollEnabled = NO;
-        // pageTable 可以滚动
-        [[NSNotificationCenter defaultCenter] postNotificationName:ZGWeiboPageTableCanScrollNotify object:nil];
     }
 }
 
@@ -157,8 +167,7 @@
 #pragma mark - notify
 - (void)didCanScroll
 {
-    NSLog(@"get PPPPPPPPP");
-    self.tableView.scrollEnabled = YES;
+    self.canScroll = YES;
 }
 
 

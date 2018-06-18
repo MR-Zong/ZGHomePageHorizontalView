@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZGPageTableView.h"
 
 UIKIT_EXTERN NSString *const ZGWeiboPageTableCanScrollNotify;
 UIKIT_EXTERN NSString *const ZGWeiboTableCanScrollNotify;
 
 @interface ZGWBBasePageController : UIViewController
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ZGPageTableView *tableView;
+@property (nonatomic, assign) BOOL canScroll;
 
 @end
