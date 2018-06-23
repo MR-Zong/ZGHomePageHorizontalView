@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 UIKIT_EXTERN CGFloat ZGWeiboHeaderViewHeight;
+UIKIT_EXTERN NSString *const ZGWeiboContentCellBeginDragNotify;
+UIKIT_EXTERN NSString *const ZGWeiboContentCellEndDragNotify;
 
 @class ZGWeiboContentCell;
 

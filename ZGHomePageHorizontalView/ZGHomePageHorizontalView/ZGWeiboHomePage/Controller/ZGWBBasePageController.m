@@ -8,6 +8,7 @@
 
 #import "ZGWBBasePageController.h"
 
+#import "ZGWeiboContentCell.h"
 
 NSString *const ZGWeiboPageTableCanScrollNotify = @"ZGWeiboPageTableCanScrollNotify";
 NSString *const ZGWeiboTableCanScrollNotify = @"ZGWeiboTableCanScrollNotify";
@@ -29,6 +30,8 @@ NSString *const ZGWeiboTableCanScrollNotify = @"ZGWeiboTableCanScrollNotify";
     // Do any additional setup after loading the view.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCanScroll) name:ZGWeiboPageTableCanScrollNotify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellBeginDrag) name:ZGWeiboContentCellBeginDragNotify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellEndDrag) name:ZGWeiboContentCellEndDragNotify object:nil];
 }
 
 #pragma mark - notify
@@ -37,8 +40,29 @@ NSString *const ZGWeiboTableCanScrollNotify = @"ZGWeiboTableCanScrollNotify";
     self.canScroll = YES;
 }
 
+- (void)didContentCellBeginDrag
+{
+    self.tableView.scrollEnabled = NO;
+}
+
+- (void)didContentCellEndDrag
+{
+    self.tableView.scrollEnabled = YES;
+    
+}
+
 
 #pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.contentCell.contentScrollView.scrollEnabled = NO;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    self.contentCell.contentScrollView.scrollEnabled = YES;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 //            NSLog(@"ppppppppppppppp");

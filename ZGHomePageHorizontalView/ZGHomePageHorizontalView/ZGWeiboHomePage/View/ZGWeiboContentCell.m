@@ -9,6 +9,8 @@
 #import "ZGWeiboContentCell.h"
 
 CGFloat ZGWeiboHeaderViewHeight = 156;
+NSString *const ZGWeiboContentCellBeginDragNotify = @"ZGWeiboContentCellBeginDragNotify";
+NSString *const ZGWeiboContentCellEndDragNotify = @"ZGWeiboContentCellEndDragNotify";
 
 @interface ZGWeiboContentCell () <UIScrollViewDelegate>
 
@@ -30,17 +32,27 @@ CGFloat ZGWeiboHeaderViewHeight = 156;
 
 - (void)setupViews
 {
-    _contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    _contentScrollView.contentSize = CGSizeMake(2*[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    _contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 -44)];
+    _contentScrollView.contentSize = CGSizeMake(2*_contentScrollView.bounds.size.width, _contentScrollView.bounds.size.height);
     _contentScrollView.backgroundColor = [UIColor blackColor];
     _contentScrollView.pagingEnabled = YES;
     _contentScrollView.delegate = self;
-    _contentScrollView.bounces = YES;
+    _contentScrollView.bounces = NO;
     [self.contentView addSubview:_contentScrollView];
     
 }
 
 #pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZGWeiboContentCellBeginDragNotify object:nil];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZGWeiboContentCellEndDragNotify object:nil];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.dragging || scrollView.decelerating) {

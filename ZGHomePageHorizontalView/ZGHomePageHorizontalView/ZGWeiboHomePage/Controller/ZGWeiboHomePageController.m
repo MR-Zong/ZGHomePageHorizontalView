@@ -9,6 +9,7 @@
 #import "ZGWeiboHomePageController.h"
 #import "ZGWeiboTableView.h"
 #import "ZGWeiboContentCell.h"
+#import "ZGWeiboTopCell.h"
 #import "ZGTabSegmentView.h"
 #import "ZGWBJapanController.h"
 #import "ZGWBAmericaController.h"
@@ -18,6 +19,7 @@
 
 @property (nonatomic, strong) ZGWeiboTableView *tableView;
 @property (nonatomic, strong) ZGWeiboContentCell *contentCell;
+@property (nonatomic, strong) ZGWeiboTopCell *topCell;
 @property (nonatomic, strong) ZGTabSegmentView *tabSegmentView;
 @property (nonatomic, assign) BOOL canScroll;
 
@@ -38,6 +40,9 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCanScroll) name:ZGWeiboTableCanScrollNotify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellBeginDrag) name:ZGWeiboContentCellBeginDragNotify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellEndDrag) name:ZGWeiboContentCellEndDragNotify object:nil];
+
     
     [self initialize];
     [self setupViews];
@@ -56,7 +61,7 @@
     _tabSegmentView = [[ZGTabSegmentView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44.0)];
     _tabSegmentView.delegate = self;
 
-    _tableView = [[ZGWeiboTableView alloc] initWithFrame:self.view.bounds];
+    _tableView = [[ZGWeiboTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     _tableView.backgroundColor = [UIColor greenColor];
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.dataSource = self;
@@ -64,16 +69,19 @@
     [_tableView registerClass:[ZGWeiboContentCell class] forCellReuseIdentifier:@"ZGWeiboContentCellReusedId"];
     [self.view addSubview:_tableView];
     
+    // contentCell
     _contentCell = [_tableView dequeueReusableCellWithIdentifier:@"ZGWeiboContentCellReusedId"];
     _contentCell.delegate = self;
     
     _jVC = [[ZGWBJapanController alloc] init];
+    _jVC.contentCell = _contentCell;
     _jVC.view.frame = CGRectMake(0, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
     [_contentCell.contentScrollView addSubview:_jVC.view];
     [self addChildViewController:_jVC];
     
     
     _aVC = [[ZGWBAmericaController alloc] init];
+    _aVC.contentCell = _contentCell;
     _aVC.view.frame = CGRectMake(_contentCell.contentScrollView.bounds.size.width, 0, _contentCell.contentScrollView.bounds.size.width, _contentCell.contentScrollView.bounds.size.height);
     [_contentCell.contentScrollView addSubview:_aVC.view];
     [self addChildViewController:_aVC];
@@ -83,7 +91,7 @@
     _tableView.contentCell = _contentCell;
 
 
-    
+    // headerView
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 156)];
     header.backgroundColor = [UIColor purpleColor];
     _tableView.tableHeaderView = header;
@@ -108,7 +116,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.tableView.bounds.size.height;
+    return [UIScreen mainScreen].bounds.size.height - 64.0 - 44.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -144,7 +152,6 @@
 
 
 #pragma mark - scrollview
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     // 限制contentOffset 范围
@@ -176,6 +183,17 @@
 - (void)didCanScroll
 {
     self.canScroll = YES;
+}
+
+- (void)didContentCellBeginDrag
+{
+    self.tableView.scrollEnabled = NO;
+}
+
+- (void)didContentCellEndDrag
+{
+    self.tableView.scrollEnabled = YES;
+    
 }
 
 

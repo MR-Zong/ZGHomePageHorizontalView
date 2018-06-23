@@ -8,6 +8,7 @@
 
 #import "ZGWeiboTableView.h"
 #import "ZGWeiboContentCell.h"
+#import "ZGWeiboTopCell.h"
 
 @implementation ZGWeiboTableView
 
@@ -20,7 +21,11 @@
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
     UIView *v = [super hitTest:point withEvent:event];
-    return self.contentCell.curTableView;
+    if (v == self.tableHeaderView) {
+        self.contentCell.contentScrollView.scrollEnabled = NO;
+        return self.contentCell.curTableView;
+    }
+    return v;
 }
 
 
