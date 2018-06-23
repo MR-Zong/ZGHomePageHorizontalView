@@ -30,8 +30,6 @@ NSString *const ZGWeiboTableCanScrollNotify = @"ZGWeiboTableCanScrollNotify";
     // Do any additional setup after loading the view.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCanScroll) name:ZGWeiboPageTableCanScrollNotify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellBeginDrag) name:ZGWeiboContentCellBeginDragNotify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellEndDrag) name:ZGWeiboContentCellEndDragNotify object:nil];
 }
 
 #pragma mark - notify

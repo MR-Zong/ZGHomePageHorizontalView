@@ -15,6 +15,11 @@
 ///允许同时识别多个手势
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
 //        NSLog(@"ffffTable gggggg ");
+    
+    // 512 是 可以水平滑动的scrollView
+    if (otherGestureRecognizer.view.tag == 512) {
+        return NO;
+    }
     return YES;
 }
 

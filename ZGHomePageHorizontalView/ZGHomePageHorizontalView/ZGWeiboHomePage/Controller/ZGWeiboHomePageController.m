@@ -40,9 +40,6 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCanScroll) name:ZGWeiboTableCanScrollNotify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellBeginDrag) name:ZGWeiboContentCellBeginDragNotify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didContentCellEndDrag) name:ZGWeiboContentCellEndDragNotify object:nil];
-
     
     [self initialize];
     [self setupViews];
@@ -184,17 +181,5 @@
 {
     self.canScroll = YES;
 }
-
-- (void)didContentCellBeginDrag
-{
-    self.tableView.scrollEnabled = NO;
-}
-
-- (void)didContentCellEndDrag
-{
-    self.tableView.scrollEnabled = YES;
-    
-}
-
 
 @end
