@@ -9,7 +9,6 @@
 #import "ZGWeiboHomePageController.h"
 #import "ZGWeiboTableView.h"
 #import "ZGWeiboContentCell.h"
-#import "ZGWeiboTopCell.h"
 #import "ZGTabSegmentView.h"
 #import "ZGWBJapanController.h"
 #import "ZGWBAmericaController.h"
@@ -19,7 +18,6 @@
 
 @property (nonatomic, strong) ZGWeiboTableView *tableView;
 @property (nonatomic, strong) ZGWeiboContentCell *contentCell;
-@property (nonatomic, strong) ZGWeiboTopCell *topCell;
 @property (nonatomic, strong) ZGTabSegmentView *tabSegmentView;
 @property (nonatomic, assign) BOOL canScroll;
 
@@ -89,7 +87,7 @@
 
 
     // headerView
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 156)];
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ZGWeiboTableHeaderViewHeight)];
     header.backgroundColor = [UIColor purpleColor];
     _tableView.tableHeaderView = header;
 }
@@ -113,7 +111,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [UIScreen mainScreen].bounds.size.height - 64.0 - 44.0;
+    return ZGWeiboContentCellHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -155,11 +153,11 @@
     //    NSLog(@"contentOffset %@",NSStringFromCGPoint(scrollView.contentOffset));
     if (scrollView == self.tableView) {
 
-        if (scrollView.contentOffset.y >= ZGWeiboHeaderViewHeight - 64.0){ // 这里是限制 非常重要
+        if (scrollView.contentOffset.y >= ZGWeiboTableHeaderViewHeight - 64.0){ // 这里是限制 非常重要
             
             // 自己不能滚动
             self.canScroll = NO;
-            [scrollView setContentOffset:CGPointMake(0, ZGWeiboHeaderViewHeight - 64.0)];
+            [scrollView setContentOffset:CGPointMake(0, ZGWeiboTableHeaderViewHeight - 64.0)];
             
             // 通知 pageTable 可以 滚动
 //            NSLog(@"ffffffffffffffff");
@@ -168,7 +166,7 @@
             
         }else {
             if (!self.canScroll) {
-                [scrollView setContentOffset:CGPointMake(0, ZGWeiboHeaderViewHeight - 64.0)];
+                [scrollView setContentOffset:CGPointMake(0, ZGWeiboTableHeaderViewHeight - 64.0)];
             }
         }
         

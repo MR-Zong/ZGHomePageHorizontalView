@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZGPageTableView.h"
+#import "ZGWeiboContentCell.h"
 
 @class ZGWeiboContentCell;
 

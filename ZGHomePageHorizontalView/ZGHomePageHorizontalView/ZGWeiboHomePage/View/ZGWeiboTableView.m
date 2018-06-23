@@ -8,7 +8,6 @@
 
 #import "ZGWeiboTableView.h"
 #import "ZGWeiboContentCell.h"
-#import "ZGWeiboTopCell.h"
 
 @implementation ZGWeiboTableView
 

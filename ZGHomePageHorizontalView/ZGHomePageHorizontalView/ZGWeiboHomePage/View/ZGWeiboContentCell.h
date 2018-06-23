@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN CGFloat ZGWeiboHeaderViewHeight;
+UIKIT_EXTERN CGFloat ZGWeiboTableHeaderViewHeight;
+#define ZGWeiboContentCellHeight ([UIScreen mainScreen].bounds.size.height - 64 -44)
 
 @class ZGWeiboContentCell;
 

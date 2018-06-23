@@ -8,8 +8,6 @@
 
 #import "ZGWBBasePageController.h"
 
-#import "ZGWeiboContentCell.h"
-
 NSString *const ZGWeiboPageTableCanScrollNotify = @"ZGWeiboPageTableCanScrollNotify";
 NSString *const ZGWeiboTableCanScrollNotify = @"ZGWeiboTableCanScrollNotify";
 

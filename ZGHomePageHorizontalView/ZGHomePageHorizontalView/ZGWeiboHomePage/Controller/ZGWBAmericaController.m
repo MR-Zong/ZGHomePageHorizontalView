@@ -23,7 +23,7 @@
 
 - (void)setupViews
 {
-    self.tableView = [[ZGPageTableView alloc] initWithFrame:self.view.bounds];
+    self.tableView = [[ZGPageTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, ZGWeiboContentCellHeight)];
     self.tableView.showsVerticalScrollIndicator= NO;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
